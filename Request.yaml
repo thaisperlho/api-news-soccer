@@ -1,0 +1,19 @@
+A requisicao e composta pela:
+    - URL:
+        - Protocolo HTTP(S)
+        - Host
+        - Endpoint
+        - Query
+    - Headers:
+        - Key 
+        - Value
+    - Body:
+        - Json
+        - Xml
+        - Html
+        - etc
+    - Method:
+        - Get
+        - Post
+        - Put/Patch
+        - Delete
