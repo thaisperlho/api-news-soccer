@@ -56,7 +56,7 @@ def select(id:int):
     con = conn()
     cursor = con.cursor()
     cursor.execute(sql)
-    data = cursor.fetchall()
+    data = cursor.fetchone()
     cursor.close()
     con.close()
     return data

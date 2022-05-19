@@ -2,7 +2,7 @@ from datetime import datetime
 from fastapi import FastAPI
 from pydantic import BaseModel, Field 
 from typing import List
-from db import insert
+from db import insert, select
 
 app = FastAPI()
 
@@ -33,12 +33,12 @@ def post_item(item: Item):
     return out
 
 @app.get("/items/{item_id}", response_model=ItemOut)
-def read_item(item_id: int):
-    global items
-    for item in items:
-        if item.id == item_id:
-            return item
-    return None
+def get_item(item_id: int):
+    data = select(id=item_id)
+    if not data:
+        return None
+    item = ItemOut(name=data[1],price=data[2],is_offer=data[3],created_at=data[4],updated_at=data[5],id=data[0])
+    return item
 
 @app.put("/items/{item_id}", response_model=ItemOut)
 def update_item(item_id: int, item: Item):
