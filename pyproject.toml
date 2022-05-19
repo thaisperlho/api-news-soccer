@@ -2,7 +2,7 @@
 name = "crud-fastapi"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["ThaisPerlho <carvalho.thais0301@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
