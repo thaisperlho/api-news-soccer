@@ -20,14 +20,16 @@ def insert(name:str, price:float, is_offer:bool, created_at:datetime, updated_at
             '{created_at}',
             '{updated_at}'
         )
+        RETURNING id
     """
     con = conn()
     cursor = con.cursor()
     cursor.execute(sql)
     con.commit()
+    id = cursor.fetchone()[0]
     cursor.close()
     con.close()
-    return "ok"
+    return id
 
 def update(name:str,price:float,is_offer:bool,updated_at:datetime ,id:int):
     sql = f"""
@@ -73,7 +75,7 @@ def delete(id:int):
 
 #insert("Carlos", 500.00, False, datetime.now(), datetime.now())
 
-update(name="Lais",price=600.00,is_offer=True, updated_at=datetime.now(),id=5)
+#update(name="Lais",price=600.00,is_offer=True, updated_at=datetime.now(),id=5)
 
 #data = select(2)
 #print(data)
