@@ -1,9 +1,9 @@
 from datetime import datetime
 from turtle import up
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field 
 from typing import List
-from db import insert, select, update
+from db import delete, insert, select, update
 
 app = FastAPI()
 
@@ -58,9 +58,11 @@ def put_item(item_id: int, item: Item):
 
 @app.delete("/items/{item_id}", response_model=ItemOut)
 def delete_item(item_id: int):
-    global items
-    for index in range(len(items)):
-        if items[index].id == item_id:
-            return items.pop(index)
-    return None
+    data = select(id=item_id)
+    if not data:
+        return None
+    delete(id=item_id)
+    item = ItemOut(name=data[1],price=data[2],is_offer=data[3],created_at=data[4],updated_at=data[5],id=data[0])
+    return item
+
 
