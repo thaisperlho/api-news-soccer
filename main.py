@@ -17,9 +17,6 @@ class Item(BaseModel):
 class ItemOut(Item):
     id: int
 
-items: List[ItemOut] = []
-id = 1
-
 @app.post("/items", response_model=ItemOut)
 def post_item(item: Item):
     id = insert(
@@ -37,7 +34,7 @@ def post_item(item: Item):
 def get_item(item_id: int):
     data = select(id=item_id)
     if not data:
-        return None
+        raise HTTPException(status_code=206, detail={"message":"item not found."})
     item = ItemOut(name=data[1],price=data[2],is_offer=data[3],created_at=data[4],updated_at=data[5],id=data[0])
     return item
 
@@ -45,7 +42,7 @@ def get_item(item_id: int):
 def put_item(item_id: int, item: Item):
     value = select(id=item_id)
     if not value:
-        return None
+        raise HTTPException(status_code=206, detail={"message":"item not found."})
     update(name=item.name, 
         price=item.price, 
         is_offer=item.is_offer,  
@@ -60,7 +57,7 @@ def put_item(item_id: int, item: Item):
 def delete_item(item_id: int):
     data = select(id=item_id)
     if not data:
-        return None
+        raise HTTPException(status_code=206, detail={"message":"item not found."})
     delete(id=item_id)
     item = ItemOut(name=data[1],price=data[2],is_offer=data[3],created_at=data[4],updated_at=data[5],id=data[0])
     return item
