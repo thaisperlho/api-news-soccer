@@ -1,8 +1,9 @@
 from datetime import datetime
+from turtle import up
 from fastapi import FastAPI
 from pydantic import BaseModel, Field 
 from typing import List
-from db import insert, select
+from db import insert, select, update
 
 app = FastAPI()
 
@@ -41,15 +42,19 @@ def get_item(item_id: int):
     return item
 
 @app.put("/items/{item_id}", response_model=ItemOut)
-def update_item(item_id: int, item: Item):
-    global items
-    for it in items:
-        if it.id == item_id:
-            it.name = item.name
-            it.price = item.price
-            it.is_offer = item.is_offer
-            return it
-    return None
+def put_item(item_id: int, item: Item):
+    value = select(id=item_id)
+    if not value:
+        return None
+    update(name=item.name, 
+        price=item.price, 
+        is_offer=item.is_offer,  
+        updated_at=item.updated_at,
+        id=item_id)
+    data = item.dict()
+    data.update({"id": item_id})
+    out = ItemOut(**data)
+    return out
 
 @app.delete("/items/{item_id}", response_model=ItemOut)
 def delete_item(item_id: int):
