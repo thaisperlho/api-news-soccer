@@ -49,3 +49,18 @@ class News:
         sql = self.table.insert().values(**data.dict(exclude_none=True))
         row = self.conn.execute(sql)
         return self.get_by_id(id=row.inserted_primary_key.id)
+
+    def change(self, data: ModelNews, id: int) -> ModelNews:
+        sql = (
+            self.table.update()
+            .where(self.table.c.id == id)
+            .values(**data.dict(exclude_none=True))
+        )
+        self.conn.execute(sql)
+        return self.get_by_id(id=id)
+
+    def delete(self, id: int) -> ModelNews:
+        row = self.get_by_id(id=id)
+        sql = self.table.delete().where(self.table.c.id == id)
+        self.conn.execute(sql)
+        return row

@@ -18,3 +18,11 @@ class GetNewsOut(BaseModel):
 
 class PostNewsOut(GetNewsOut):
     ...
+
+
+class PutNewsOut(GetNewsOut):
+    ...
+
+
+class DelNewsOut(GetNewsOut):
+    ...
