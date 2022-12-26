@@ -24,6 +24,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "asgi-correlation-id"
+version = "3.2.1"
+description = "Middleware correlating project logs to individual requests"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+starlette = ">=0.18"
+
+[[package]]
 name = "asgiref"
 version = "3.5.2"
 description = "ASGI specs, helper code, and adapters"
@@ -55,6 +66,28 @@ description = "Specifications for callback functions passed in to an API"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "black"
+version = "22.12.0"
+description = "The uncompromising code formatter."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=8.0.0"
+mypy-extensions = ">=0.4.3"
+pathspec = ">=0.9.0"
+platformdirs = ">=2"
+tomli = {version = ">=1.1.0", markers = "python_full_version < \"3.11.0a7\""}
+typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
+
+[package.extras]
+colorama = ["colorama (>=0.4.3)"]
+d = ["aiohttp (>=3.7.4)"]
+jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
+uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "click"
@@ -135,6 +168,19 @@ setproctitle = ["setproctitle"]
 tornado = ["tornado (>=0.2)"]
 
 [[package]]
+name = "guvicorn-logger"
+version = "0.1.13"
+description = "Colored, normalizes and joins logs between Uvicorn and Gunicorn."
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+gunicorn = "*"
+psutil = "*"
+uvicorn = "*"
+
+[[package]]
 name = "h11"
 version = "0.13.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -186,6 +232,20 @@ test = ["pytest (<7.1)", "pytest-asyncio", "testpath"]
 test_extra = ["pytest (<7.1)", "pytest-asyncio", "testpath", "curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.19)", "pandas", "trio"]
 
 [[package]]
+name = "isort"
+version = "5.11.4"
+description = "A Python utility / library to sort Python imports."
+category = "dev"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.extras]
+colors = ["colorama (>=0.4.3,<0.5.0)"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
+plugins = ["setuptools"]
+
+[[package]]
 name = "jedi"
 version = "0.18.1"
 description = "An autocompletion tool for Python that can be used for text editors."
@@ -212,6 +272,14 @@ python-versions = ">=3.5"
 traitlets = "*"
 
 [[package]]
+name = "mypy-extensions"
+version = "0.4.3"
+description = "Experimental type system extensions for programs checked with the mypy typechecker."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "parso"
 version = "0.8.3"
 description = "A Python Parser"
@@ -222,6 +290,14 @@ python-versions = ">=3.6"
 [package.extras]
 qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
 testing = ["docopt", "pytest (<6.0.0)"]
+
+[[package]]
+name = "pathspec"
+version = "0.10.3"
+description = "Utility library for gitignore style pattern matching of file paths."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "pexpect"
@@ -243,6 +319,18 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "platformdirs"
+version = "2.6.0"
+description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo (>=2022.9.29)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.19.4)", "sphinx (>=5.3)"]
+test = ["appdirs (==1.4.4)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2)"]
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.30"
 description = "Library for building powerful interactive command lines in Python"
@@ -252,6 +340,17 @@ python-versions = ">=3.6.2"
 
 [package.dependencies]
 wcwidth = "*"
+
+[[package]]
+name = "psutil"
+version = "5.9.4"
+description = "Cross-platform lib for process and system monitoring in Python."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.extras]
+test = ["ipaddress", "mock", "enum34", "pywin32", "wmi"]
 
 [[package]]
 name = "psycopg2-binary"
@@ -383,6 +482,14 @@ typing-extensions = {version = ">=3.10.0", markers = "python_version < \"3.10\""
 full = ["itsdangerous", "jinja2", "python-multipart", "pyyaml", "requests"]
 
 [[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "traitlets"
 version = "5.3.0"
 description = ""
@@ -428,7 +535,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "55c6232921efafbabce8c704176ba9781ca3bc5d2d9e52b3c09985cb5a129293"
+content-hash = "e4cb3e28f62612f622938dec086830074ac06e6ae991acc51819b91769093192"
 
 [metadata.files]
 anyio = [
@@ -439,6 +546,7 @@ appnope = [
     {file = "appnope-0.1.3-py2.py3-none-any.whl", hash = "sha256:265a455292d0bd8a72453494fa24df5a11eb18373a60c7c0430889f22548605e"},
     {file = "appnope-0.1.3.tar.gz", hash = "sha256:02bd91c4de869fbb1e1c50aafc4098827a7a54ab2f39d9dcba6c9547ed920e24"},
 ]
+asgi-correlation-id = []
 asgiref = [
     {file = "asgiref-3.5.2-py3-none-any.whl", hash = "sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4"},
     {file = "asgiref-3.5.2.tar.gz", hash = "sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424"},
@@ -451,6 +559,7 @@ backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
 ]
+black = []
 click = [
     {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
     {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
@@ -523,6 +632,7 @@ greenlet = [
     {file = "greenlet-1.1.2.tar.gz", hash = "sha256:e30f5ea4ae2346e62cedde8794a56858a67b878dd79f7df76a0767e356b1744a"},
 ]
 gunicorn = []
+guvicorn-logger = []
 h11 = [
     {file = "h11-0.13.0-py3-none-any.whl", hash = "sha256:8ddd78563b633ca55346c8cd41ec0af27d3c79931828beffb46ce70a379e7442"},
     {file = "h11-0.13.0.tar.gz", hash = "sha256:70813c1135087a248a4d38cc0e1a0181ffab2188141a93eaf567940c3957ff06"},
@@ -532,6 +642,7 @@ idna = [
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
 ipython = []
+isort = []
 jedi = [
     {file = "jedi-0.18.1-py2.py3-none-any.whl", hash = "sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d"},
     {file = "jedi-0.18.1.tar.gz", hash = "sha256:74137626a64a99c8eb6ae5832d99b3bdd7d29a3850fe2aa80a4126b2a7d949ab"},
@@ -540,10 +651,12 @@ matplotlib-inline = [
     {file = "matplotlib-inline-0.1.3.tar.gz", hash = "sha256:a04bfba22e0d1395479f866853ec1ee28eea1485c1d69a6faf00dc3e24ff34ee"},
     {file = "matplotlib_inline-0.1.3-py3-none-any.whl", hash = "sha256:aed605ba3b72462d64d475a21a9296f400a19c4f74a31b59103d2a99ffd5aa5c"},
 ]
+mypy-extensions = []
 parso = [
     {file = "parso-0.8.3-py2.py3-none-any.whl", hash = "sha256:c001d4636cd3aecdaf33cbb40aebb59b094be2a74c556778ef5576c175e19e75"},
     {file = "parso-0.8.3.tar.gz", hash = "sha256:8c07be290bb59f03588915921e29e8a50002acaf2cdc5fa0e0114f91709fafa0"},
 ]
+pathspec = []
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
     {file = "pexpect-4.8.0.tar.gz", hash = "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"},
@@ -552,7 +665,9 @@ pickleshare = [
     {file = "pickleshare-0.7.5-py2.py3-none-any.whl", hash = "sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"},
     {file = "pickleshare-0.7.5.tar.gz", hash = "sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca"},
 ]
+platformdirs = []
 prompt-toolkit = []
+psutil = []
 psycopg2-binary = [
     {file = "psycopg2-binary-2.9.3.tar.gz", hash = "sha256:761df5313dc15da1502b21453642d7599d26be88bff659382f8f9747c7ebea4e"},
     {file = "psycopg2_binary-2.9.3-cp310-cp310-macosx_10_14_x86_64.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:539b28661b71da7c0e428692438efbcd048ca21ea81af618d845e06ebfd29478"},
@@ -638,6 +753,7 @@ starlette = [
     {file = "starlette-0.19.1-py3-none-any.whl", hash = "sha256:5a60c5c2d051f3a8eb546136aa0c9399773a689595e099e0877704d5888279bf"},
     {file = "starlette-0.19.1.tar.gz", hash = "sha256:c6d21096774ecb9639acad41b86b7706e52ba3bf1dc13ea4ed9ad593d47e24c7"},
 ]
+tomli = []
 traitlets = []
 typing-extensions = []
 uvicorn = [

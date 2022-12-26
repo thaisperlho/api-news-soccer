@@ -4,6 +4,8 @@ RUN apt-get update
 
 RUN apt-get install libpq-dev -y
 
+RUN apt-get install gcc python3-dev -y
+
 EXPOSE 8081
 
 COPY requirements.txt .
