@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: app_backend
+    build: 
+      context: .
+      dockerfile: ./dockerfile
+    env_file: .env
+    ports: 
+      - 8081:8081
+    depends_on:
+      - db
+    links:
+      - db:db
+    networks:
+      - default
+      - backend
+
+  db:
+    image: postgres:14-alpine
+    container_name: db_postgres
+    volumes:
+      - ~/database/postgres/data:/var/lib/postgresql/data/
+    env_file: .env
+    ports:
+      - 5432:5432
+    networks:
+      - default
+      - backend
+
+networks: 
+  backend:
